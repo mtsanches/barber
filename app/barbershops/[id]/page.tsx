@@ -1,7 +1,16 @@
+import PhoneItem from "@/app/_components/phone-item";
 import ServiceItem from "@/app/_components/service-item";
 import { Button } from "@/app/_components/ui/button";
 import { db } from "@/app/_lib/prisma";
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
+import {
+  ChevronLeftIcon,
+  CopyIcon,
+  MapPinIcon,
+  MenuIcon,
+  MessageCircle,
+  SmartphoneIcon,
+  StarIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -69,17 +78,27 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
         </div>
       </div>
 
-      {/* DADOS DA BARBEARIA */}
+      {/* DESCRIÇÃO */}
       <div className="border-b border-solid p-5 space-y-2">
         <h2 className="font-bold uppercase text-gray-400 text-xs">Sobre nós</h2>
         <p className="text-sm text-justify">{barbershop?.description}</p>
       </div>
 
       {/* SERVIÇOS DA BARBEARIA */}
-      <div className="p-5 space-y-3">
+      <div className="p-5 space-y-3 border-b border-solid">
         <h2 className="font-bold uppercase text-gray-400 text-xs">Serviços</h2>
         {barbershop.services.map((service) => (
           <ServiceItem key={service.id} service={service} />
+        ))}
+      </div>
+
+      <div className="p-5 space-y-3">
+        <h2 className="font-bold uppercase text-gray-400 text-xs mb-2">
+          Contato
+        </h2>
+        {/* COMPONENTE DOS BOTÕES DE CONTATO */}
+        {barbershop.phones.map((phone) => (
+          <PhoneItem key={phone} phone={phone} />
         ))}
       </div>
     </div>
