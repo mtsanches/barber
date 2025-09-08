@@ -26,7 +26,7 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 
-const SidebarButton = () => {
+const SidebarSheet = () => {
   return (
     <SheetContent className="overflow-y-auto">
       <SheetHeader>
@@ -109,4 +109,4 @@ const SidebarButton = () => {
   );
 };
 
-export default SidebarButton;
+export default SidebarSheet;
